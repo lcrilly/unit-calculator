@@ -1,0 +1,77 @@
+{
+    "listeners": {
+        "*:9000": {
+            "pass": "routes"
+        }
+     },
+
+    "routes": [
+        {
+            "match": {
+                "uri": "/add"
+            },
+            "action": {
+                "pass": "applications/add"
+            }
+        },
+        {
+            "match": {
+                "uri": "/subtract"
+            },
+            "action": {
+                "pass": "applications/subtract"
+            }
+        },
+        {
+            "match": {
+                "uri": "/multiply/"
+            },
+            "action": {
+                "pass": "applications/multiply"
+            }
+        },
+        {
+            "match": {
+                "uri": "/divide"
+            },
+            "action": {
+                "pass": "applications/divide"
+            }
+        },
+        {
+            "action": {
+                "share": [
+                    "/Users/crilly/dev/unitcalc/frontend/$uri",
+                    "/Users/crilly/dev/unitcalc/$uri"
+                ]                    
+            }
+        }
+    ],
+
+    "applications": {
+        "add": {
+            "type": "python",
+            "path": "/Users/crilly/dev/unitcalc/add/",
+            "module": "add"
+        },
+
+        "subtract": {
+            "type": "ruby",
+            "working_directory": "/Users/crilly/dev/unitcalc/subtract/",
+            "script": "subtract.ru"
+        },
+
+        "multiply": {
+            "type": "java",
+            "webapp": "/Users/crilly/dev/unitcalc/multiply/",
+            "options": [ "-Dnginx.unit.context.path=multiply"],
+            "classpath": [ "/Users/crilly/dev/unitcalc/multiply/json-simple-4.0.0.jar" ]
+        },
+
+        "divide": {
+            "type": "external", // Node.JS
+            "working_directory": "/Users/crilly/dev/unitcalc/divide/",
+            "executable": "divide.js"
+        }
+    }
+}

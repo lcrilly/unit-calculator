@@ -1,0 +1,45 @@
+<head>
+    <title>UnitCalc 9000</title>
+    <link rel="stylesheet" href="buttons.css">
+    <script src="unitcalc.js"></script>
+</head>
+<body>
+    <form name=calc id=cal>
+    <table>
+        <tr>
+            <td colspan=4><input id=val type=text value=0></td>
+        </tr>
+        <tr>
+            <td><button type=button class=toprow onClick="allClear()">AC</button></td>
+            <td colspan=3 align=right valign=top><i>UnitCalc 9000</i></td>
+        </tr>
+        <tr>
+            <td><button type=button class=digit onClick="registerDigit('7')">7</button></td>
+            <td><button type=button class=digit onClick="registerDigit('8')">8</button></td>
+            <td><button type=button class=digit onClick="registerDigit('9')">9</button></td>
+            <td><button type=button class=digit onClick="registerOperation('/')">&#247;</button></td>
+        </tr>
+        <tr>
+            <td><button type=button class=digit onClick="registerDigit('4')">4</button></td>
+            <td><button type=button class=digit onClick="registerDigit('5')">5</button></td>
+            <td><button type=button class=digit onClick="registerDigit('6')">6</button></td>
+            <td><button type=button class=digit onClick="registerOperation('*')">&#215;</button></td>
+        </tr>
+        <tr>
+            <td><button type=button class=digit onClick="registerDigit('1')">1</button></td>
+            <td><button type=button class=digit onClick="registerDigit('2')">2</button></td>
+            <td><button type=button class=digit onClick="registerDigit('3')">3</button></td>
+            <td><button type=button class=digit onClick="registerOperation('-')">-</button></td>
+        </tr>
+        <tr>
+            <td><button type=button class=digit onClick="registerDigit('0')">0</button></td>
+            <td><button type=button class=digit onClick="registerDigit('.')">.</button></td>
+            <td><button type=button class=digit onClick="execute()">=</button></td>
+            <td><button type=button class=digit onClick="registerOperation('+')">+</button></td>
+        </tr>
+    </table>
+    </form>
+    <p>
+        <a href=backend-oas3.yaml>Open API Specification</a>
+    </p>
+</body>

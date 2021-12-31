@@ -1,0 +1,97 @@
+openapi: 3.0.0
+info:
+  title: Simple Calculator
+  version: 1.0.0
+  description: JSON/REST API for basic mathematical operations
+  contact:
+    email: liam@nginx.com
+    name: Liam Crilly
+    url: https://github.com/lcrilly/unit-calculator
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+
+servers:
+  - url: https://{server}
+    variables:
+      server:
+        default: localhost:9000
+
+paths:
+  /add:
+    summary: Addition
+    post:
+      summary: Sum of all operands
+      requestBody:
+        description: Operands for addition
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Operands'
+      responses:
+        200:
+          description: Result
+        default:
+          description: Error
+  /subtract:
+    summary: Subtraction
+    post:
+      summary: Subtraction of all operands
+      requestBody:
+        description: Operands for subtraction
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Operands'
+      responses:
+        200:
+          description: Result
+        default:
+          description: Error
+          
+  /multiply:
+    summary: Multiplication
+    post:
+      summary: Product of all operands
+      requestBody:
+        description: Operands for multiplication
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Operands'
+      responses:
+        200:
+          description: Result
+        default:
+          description: Error
+          
+  /divide:
+    summary: Division
+    post:
+      summary: Division of all operands
+      requestBody:
+        description: Operands for division
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Operands'
+      responses:
+        200:
+          description: Result
+        default:
+          description: Error
+
+components:
+  schemas:
+    Operands:
+      properties:
+        operands:
+          type: array
+          items:
+            type: number
+          minItems: 2
+          example: [-5, 1.2]

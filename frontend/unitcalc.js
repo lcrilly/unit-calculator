@@ -31,7 +31,15 @@ function registerOperation(button) {
             operationUri = '/add'; // Python
             break;
     }
-    xhr.open("POST", operationUri);
+    xhr.open('POST', operationUri);
+}
+
+function squareRoot() {
+    xhr.open('POST', '/sqroot');
+    payload.operand = Number(document.getElementById('val').value);
+    console.log("SENDING: " + JSON.stringify(payload));
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.send(JSON.stringify(payload));
 }
 
 function allClear() {

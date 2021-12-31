@@ -39,10 +39,18 @@
             }
         },
         {
+            "match": {
+                "uri": "/sqroot"
+            },
+            "action": {
+                "pass": "applications/sqroot"
+            }
+        },
+        {
             "action": {
                 "share": [
-                    "/Users/crilly/dev/unitcalc/frontend/$uri",
-                    "/Users/crilly/dev/unitcalc/$uri"
+                    "/Users/crilly/dev/unit-calculator/frontend/$uri",
+                    "/Users/crilly/dev/unit-calculator/$uri"
                 ]                    
             }
         }
@@ -51,27 +59,33 @@
     "applications": {
         "add": {
             "type": "python",
-            "path": "/Users/crilly/dev/unitcalc/add/",
+            "path": "/Users/crilly/dev/unit-calculator/add/",
             "module": "add"
         },
 
         "subtract": {
             "type": "ruby",
-            "working_directory": "/Users/crilly/dev/unitcalc/subtract/",
+            "working_directory": "/Users/crilly/dev/unit-calculator/subtract/",
             "script": "subtract.ru"
         },
 
         "multiply": {
             "type": "java",
-            "webapp": "/Users/crilly/dev/unitcalc/multiply/",
+            "webapp": "/Users/crilly/dev/unit-calculator/multiply/",
             "options": [ "-Dnginx.unit.context.path=multiply"],
-            "classpath": [ "/Users/crilly/dev/unitcalc/multiply/json-simple-4.0.0.jar" ]
+            "classpath": [ "/Users/crilly/dev/unit-calculator/multiply/json-simple-4.0.0.jar" ]
         },
 
         "divide": {
             "type": "external", // Node.JS
-            "working_directory": "/Users/crilly/dev/unitcalc/divide/",
+            "working_directory": "/Users/crilly/dev/unit-calculator/divide/",
             "executable": "divide.js"
+        },
+
+        "sqroot": {
+            "type": "external", // Golang
+            "working_directory": "/Users/crilly/dev/unit-calculator/sqroot/",
+            "executable": "/Users/crilly/dev/unit-calculator/sqroot/sqroot"
         }
     }
 }

@@ -4,3 +4,6 @@ node_modules/
 package-lock.json
 package.json
 .DS_Store
+go.mod
+go.sum
+sqroot

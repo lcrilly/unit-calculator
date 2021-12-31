@@ -84,6 +84,23 @@ paths:
           description: Result
         default:
           description: Error
+          
+  /sqroot:
+    summary: Square root
+    post:
+      summary: Square root of single operand
+      requestBody:
+        description: Operand for square root function
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Operand'
+      responses:
+        200:
+          description: Result
+        default:
+          description: Error
 
 components:
   schemas:
@@ -95,3 +112,8 @@ components:
             type: number
           minItems: 2
           example: [-5, 1.2]
+    Operand:
+      properties:
+        operands:
+          type: number
+          example: 81

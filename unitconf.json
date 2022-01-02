@@ -49,8 +49,8 @@
         {
             "action": {
                 "share": [
-                    "/Users/crilly/dev/unit-calculator/frontend/$uri",
-                    "/Users/crilly/dev/unit-calculator/$uri"
+                    "/var/www/unit-calculator/frontend/$uri",
+                    "/var/www/unit-calculator/$uri"
                 ]                    
             }
         }
@@ -59,33 +59,33 @@
     "applications": {
         "add": {
             "type": "python",
-            "path": "/Users/crilly/dev/unit-calculator/add/",
+            "path": "/var/www/unit-calculator/add/",
             "module": "add"
         },
 
         "subtract": {
             "type": "ruby",
-            "working_directory": "/Users/crilly/dev/unit-calculator/subtract/",
+            "working_directory": "/var/www/unit-calculator/subtract/",
             "script": "subtract.ru"
         },
 
         "multiply": {
             "type": "java",
-            "webapp": "/Users/crilly/dev/unit-calculator/multiply/",
+            "webapp": "/var/www/unit-calculator/multiply/",
             "options": [ "-Dnginx.unit.context.path=multiply"],
-            "classpath": [ "/Users/crilly/dev/unit-calculator/multiply/json-simple-4.0.0.jar" ]
+            "classpath": [ "/var/www/unit-calculator/multiply/json-simple-4.0.0.jar" ]
         },
 
         "divide": {
             "type": "external", // Node.JS
-            "working_directory": "/Users/crilly/dev/unit-calculator/divide/",
+            "working_directory": "/var/www/unit-calculator/divide/",
             "executable": "divide.js"
         },
 
         "sqroot": {
             "type": "external", // Golang
-            "working_directory": "/Users/crilly/dev/unit-calculator/sqroot/",
-            "executable": "/Users/crilly/dev/unit-calculator/sqroot/sqroot"
+            "working_directory": "/var/www/unit-calculator/sqroot/",
+            "executable": "/var/www/unit-calculator/sqroot/sqroot"
         }
     }
 }

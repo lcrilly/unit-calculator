@@ -6,4 +6,5 @@ package.json
 .DS_Store
 go.mod
 go.sum
-sqroot/sqroot
+**/sqroot
+unitconf_local.json

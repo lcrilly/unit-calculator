@@ -3,6 +3,8 @@ UnitCalc 9000
 
 A demo application that implements a simple desktop calculator to highlight various capabilities of [NGINX Unit](https://unit.nginx.org/).
 
+![UnitCalc screenshot](unitcalc0.png)
+
 Application Architecture
 ------------------------
 UnitCalc 9000 is a web application with the following characteristics:
@@ -28,7 +30,7 @@ Installation
 3. Start NGINX Unit
    - `unitd --control 127.0.0.1:8080`
 4. Apply the Unit configuration
-   - `curl -X PUT -d@unitconf_local.json http://127.0.0.1:8080/config`
+   - `curl -X PUT --data-binary @unitconf_local.json http://127.0.0.1:8080/config`
 
 **Docker**
 

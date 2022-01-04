@@ -12,7 +12,7 @@ info:
     url: http://www.apache.org/licenses/LICENSE-2.0.html
 
 servers:
-  - url: https://{server}
+  - url: http://{server}
     variables:
       server:
         default: localhost:9000

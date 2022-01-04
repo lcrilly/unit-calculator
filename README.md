@@ -12,11 +12,11 @@ UnitCalc 9000 is a web application with the following characteristics:
  * HTML/CSS/JavaScript frontend to render a familiar desktop calculator
  * JSON/REST backend API that implements the mathematical operations
  * Each mathematical operation is implemented as a discrete microservice
-   - **`+`** Python
-   - **`-`** Ruby
-   - **`×`** Java
-   - **`÷`** Node.JS
-   - **`√`** Go
+   - **` + `** Python
+   - **` - `** Ruby
+   - **` × `** Java
+   - **` ÷ `** Node.JS
+   - **` √ `** Go
  * NGINX Unit serves the frontend and backend components on a single port, and without any other dependencies
    - Each of the mathematical operations are routed to their respective application code
    - All other requests are routed to the `frontend` directory

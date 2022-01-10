@@ -3,7 +3,7 @@ UnitCalc 9000
 
 A demo application that implements a simple desktop calculator to highlight various capabilities of [NGINX Unit](https://unit.nginx.org/).
 
-![UnitCalc screenshot](unitcalc0.png)
+![UnitCalc screenshot](demo.gif)
 
 Application Architecture
 ------------------------

@@ -24,7 +24,7 @@
         },
         {
             "match": {
-                "uri": "/multiply/"
+                "uri": "/multiply"
             },
             "action": {
                 "pass": "applications/multiply"
@@ -72,7 +72,6 @@
         "multiply": {
             "type": "java",
             "webapp": "/var/www/unit-calculator/multiply/",
-            "options": [ "-Dnginx.unit.context.path=multiply"],
             "classpath": [ "/var/www/unit-calculator/multiply/json-simple-4.0.0.jar" ]
         },
 

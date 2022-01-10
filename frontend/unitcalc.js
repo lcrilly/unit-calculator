@@ -19,7 +19,7 @@ function registerOperation(button) {
 
     switch(button) {
         case '*':
-            operationUri = '/multiply/'; // Java (Unit needs trailing '/' for "routed" Java apps)
+            operationUri = '/multiply';
             break;
         case '/':
             operationUri = '/divide'; // GoLang

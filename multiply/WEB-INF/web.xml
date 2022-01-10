@@ -1,7 +1,7 @@
 <web-app>
     <servlet>
         <servlet-name>multiply</servlet-name>
-        <jsp-file>/index.jsp</jsp-file>
+        <jsp-file>/multiply.jsp</jsp-file>
     </servlet>
 
     <servlet-mapping>

@@ -1,23 +1,27 @@
 #!/usr/bin/env bash
 
-printf "${0##*/}: INFO: Checking system pre-requisites\n"
-MISSING=""
-for dep in brew java ruby python3; do
-        hash $dep 2> /dev/null
-        if [ $? -ne 0 ]; then
-                MISSING="$dep $MISSING"
-        fi
-done
-if [ "$MISSING" != "" ]; then
-    printf "${0##*/}: ERROR: Missing system pre-requisites, please install $MISSING\n"
-    exit 1
+if [ "$1" == "--nochecks" ]; then
+    printf "${0##*/}: INFO: Skipping system pre-requisites\n"
+else
+    printf "${0##*/}: INFO: Checking system pre-requisites\n"
+    MISSING=""
+    for dep in brew java ruby python3; do
+            hash $dep 2> /dev/null
+            if [ $? -ne 0 ]; then
+                    MISSING="$dep $MISSING"
+            fi
+    done
+    if [ "$MISSING" != "" ]; then
+        printf "${0##*/}: ERROR: Missing system pre-requisites, please install $MISSING\n"
+        exit 1
+    fi
+
+    printf "${0##*/}: INFO: Installing languages pre-requisites\n"
+    brew install node golang
+
+    printf "\n${0##*/}: INFO: Installing NGINX Unit\n"
+    brew install nginx/unit/unit && brew install unit-java unit-python3 unit-ruby
 fi
-
-printf "${0##*/}: INFO: Installing languages pre-requisites\n"
-brew install node golang
-
-printf "\n${0##*/}: INFO: Installing NGINX Unit\n"
-brew install nginx/unit/unit && brew install unit-java unit-python3 unit-ruby
 
 printf "\n${0##*/}: INFO: Configuring Node.JS division service\n"
 cd divide

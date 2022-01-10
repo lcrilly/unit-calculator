@@ -71,8 +71,7 @@
 
         "multiply": {
             "type": "java",
-            "webapp": "/var/www/unit-calculator/multiply/",
-            "classpath": [ "/var/www/unit-calculator/multiply/json-simple-4.0.0.jar" ]
+            "webapp": "/var/www/unit-calculator/multiply/"
         },
 
         "divide": {

@@ -21,6 +21,7 @@ else
 
     printf "\n${0##*/}: INFO: Installing NGINX Unit\n"
     brew install nginx/unit/unit && brew install unit-java unit-python3 unit-ruby
+    npm install -g --unsafe-perm unit-http
 fi
 
 printf "\n${0##*/}: INFO: Configuring Node.JS division service\n"

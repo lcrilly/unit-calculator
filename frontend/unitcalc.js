@@ -34,8 +34,8 @@ function registerOperation(button) {
     xhr.open('POST', operationUri);
 }
 
-function squareRoot() {
-    xhr.open('POST', '/sqroot');
+function execUnary(op) {
+    xhr.open('POST', '/' + op);
     payload.operand = Number(document.getElementById('val').value);
     console.log("SENDING: " + JSON.stringify(payload));
     xhr.setRequestHeader("Content-Type", "application/json");
@@ -49,7 +49,7 @@ function allClear() {
     document.getElementById('val').value = '0';
 }
 
-function execute() {
+function execEquals() {
     if (document.getElementById('val').value === '0') {
         return document.getElementById('val').value = 'Err';
     }

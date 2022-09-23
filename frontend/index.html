@@ -10,37 +10,46 @@
             <td colspan=4><input id=val readonly type=text value=0></td>
         </tr>
         <tr>
-            <td><button type=button class=toprow onClick="allClear()">AC</button></td>
-            <td><button type=button class=toprow onClick="squareRoot()">&#8730;</button></td>
-            <td colspan=3 align=right valign=top><i>UnitCalc 9000</i></td>
+            <td colspan=4 align=right><i>UnitCalc 9000</i></td>
         </tr>
+        <tr>
+            <td><button type=button class=toprow onClick="allClear()">AC</button></td>
+            <td><button type=button class=toprow onClick="execUnary('sqroot')" title="Golang">&#8730;</button></td>
+            <td><button type=button class=toprow onClick="execUnary('square')" title="PHP"><i>x</i>&#178;</button></td>
+            <td><button type=button class=toprow onClick="execUnary('inverse')" title="Perl">&#185;<i>/<sub>x</sub></i></button></td>
+        </tr>
+        <!--tr>
+            <td><button type=button class=toprow onClick="sin()">sin</button></td>
+            <td><button type=button class=toprow onClick="cos()">cos</button></td>
+            <td><button type=button class=toprow onClick="tan()">tan</button></td>
+        </tr-->
         <tr>
             <td><button type=button class=digit onClick="registerDigit('7')">7</button></td>
             <td><button type=button class=digit onClick="registerDigit('8')">8</button></td>
             <td><button type=button class=digit onClick="registerDigit('9')">9</button></td>
-            <td><button type=button class=digit onClick="registerOperation('/')">&#247;</button></td>
+            <td><button type=button class=digit onClick="registerOperation('/')" title="Node.js">&#247;</button></td>
         </tr>
         <tr>
             <td><button type=button class=digit onClick="registerDigit('4')">4</button></td>
             <td><button type=button class=digit onClick="registerDigit('5')">5</button></td>
             <td><button type=button class=digit onClick="registerDigit('6')">6</button></td>
-            <td><button type=button class=digit onClick="registerOperation('*')">&#215;</button></td>
+            <td><button type=button class=digit onClick="registerOperation('*')" title="Java">&#215;</button></td>
         </tr>
         <tr>
             <td><button type=button class=digit onClick="registerDigit('1')">1</button></td>
             <td><button type=button class=digit onClick="registerDigit('2')">2</button></td>
             <td><button type=button class=digit onClick="registerDigit('3')">3</button></td>
-            <td><button type=button class=digit onClick="registerOperation('-')">-</button></td>
+            <td><button type=button class=digit onClick="registerOperation('-')" title="Ruby">-</button></td>
         </tr>
         <tr>
             <td><button type=button class=digit onClick="registerDigit('0')">0</button></td>
             <td><button type=button class=digit onClick="registerDigit('.')">.</button></td>
-            <td><button type=button class=digit onClick="execute()">=</button></td>
-            <td><button type=button class=digit onClick="registerOperation('+')">+</button></td>
+            <td><button type=button class=digit onClick="execEquals()">=</button></td>
+            <td><button type=button class=digit onClick="registerOperation('+')" title="Python">+</button></td>
         </tr>
     </table>
     </form>
     <p>
-        <a href=backend-oas3.yaml>Open API Specification</a>
+        <a href=calculator-oas3.yaml>Open API Specification</a>
     </p>
 </body>

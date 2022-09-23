@@ -47,6 +47,22 @@
             }
         },
         {
+            "match": {
+                "uri": "/square"
+            },
+            "action": {
+                "pass": "applications/square"
+            }
+        },
+        {
+            "match": {
+                "uri": "/inverse"
+            },
+            "action": {
+                "pass": "applications/inverse"
+            }
+        },
+        {
             "action": {
                 "share": [
                     "/var/www/unit-calculator/frontend/$uri",
@@ -59,31 +75,38 @@
     "applications": {
         "add": {
             "type": "python",
-            "path": "/var/www/unit-calculator/add/",
+            "path": "/var/www/unit-calculator/backend",
             "module": "add"
         },
-
         "subtract": {
             "type": "ruby",
-            "working_directory": "/var/www/unit-calculator/subtract/",
+            "working_directory": "/var/www/unit-calculator/backend",
             "script": "subtract.ru"
         },
-
         "multiply": {
             "type": "java",
-            "webapp": "/var/www/unit-calculator/multiply/"
+            "webapp": "/var/www/unit-calculator/backend/",
+            "classpath": ["/var/www/unit-calculator/backend/multiply-lib/json-simple-4.0.0.jar"]
         },
-
         "divide": {
-            "type": "external", // Node.JS
-            "working_directory": "/var/www/unit-calculator/divide/",
+            "type": "external",
+            "working_directory": "/var/www/unit-calculator/backend",
             "executable": "divide.js"
         },
-
         "sqroot": {
-            "type": "external", // Golang
-            "working_directory": "/var/www/unit-calculator/sqroot/",
-            "executable": "/var/www/unit-calculator/sqroot/sqroot"
+            "type": "external",
+            "working_directory": "/var/www/unit-calculator/backend",
+            "executable": "sqroot"
+        },
+		"square": {
+			"type": "php",
+			"root": "/var/www/unit-calculator/backend",
+			"script": "square.php"
+		},
+
+        "inverse": {
+            "type": "perl",
+            "script": "/var/www/unit-calculator/backend/inverse.psgi"
         }
     }
 }

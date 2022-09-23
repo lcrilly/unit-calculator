@@ -17,6 +17,8 @@ UnitCalc 9000 is a web application with the following characteristics:
    - **` × `** Java
    - **` ÷ `** Node.JS
    - **` √ `** Go
+   - **` x²`** PHP
+   - **`1/x`** Perl
  * NGINX Unit serves the frontend and backend components on a single port, and without any other dependencies
    - Each of the mathematical operations are routed to their respective application code
    - All other requests are routed to the `frontend` directory
@@ -36,7 +38,7 @@ Installation
 
 **Docker**
 
-1. Download the [Dockerfile](Dockerfile)
+1. Clone this repo and `cd` into it
 2. Build Docker image
    - `docker build -t unitcalc .`
 3. Start the image
@@ -46,5 +48,5 @@ Demonstration
 -------------
  * Test backend operation
    - `curl -d '{"operands": [5, 10, 10]}' http://localhost:9000/add`
-   - Check [Open API Specification](backend-oas3.yaml) for other backend operations
+   - Check [Open API Specification](frontend/calculator-oas3.yaml) for other backend operations
  * Open browser at [localhost:9000](http://localhost:9000/)

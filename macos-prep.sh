@@ -23,8 +23,7 @@ else
     brew install nginx/unit/unit && brew install unit-java unit-python3 unit-ruby unit-php unit-perl
     npm install -g --unsafe-perm unit-http
     gem install rack
-    sudo cpan App:cpanminus
-    sudo cpamn --notest Plack JSON
+    sudo cpan App:cpanminus && sudo cpanm --notest Plack JSON
 fi
 
 printf "\n${0##*/}: INFO: Configuring Node.JS division service\n"

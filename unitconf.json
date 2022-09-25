@@ -64,10 +64,7 @@
         },
         {
             "action": {
-                "share": [
-                    "/var/www/unit-calculator/frontend/$uri",
-                    "/var/www/unit-calculator/$uri"
-                ]                    
+                "share": "/var/www/unit-calculator/frontend/$uri"
             }
         }
     ],
@@ -98,12 +95,11 @@
             "working_directory": "/var/www/unit-calculator/backend",
             "executable": "sqroot"
         },
-		"square": {
-			"type": "php",
-			"root": "/var/www/unit-calculator/backend",
-			"script": "square.php"
-		},
-
+        "square": {
+            "type": "php",
+            "root": "/var/www/unit-calculator/backend",
+            "script": "square.php"
+        },
         "inverse": {
             "type": "perl",
             "script": "/var/www/unit-calculator/backend/inverse.psgi"

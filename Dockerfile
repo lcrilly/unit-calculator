@@ -17,7 +17,7 @@ RUN cd backend && \
     cpan App:cpanminus && cpanm Plack JSON
 
 COPY unitconf.json /var/lib/unit/conf.json
-RUN ln -sf /dev/stdout /var/log/unit.log
+RUN sed -i 's/frontend$uri/frontend/' /var/lib/unit/conf.json 
 STOPSIGNAL SIGTERM
 EXPOSE 8080 9000
-CMD ["unitd", "--no-daemon", "--control", "0.0.0.0:8080"]
+CMD ["unitd", "--no-daemon", "--control", "0.0.0.0:8080", "--log",  "/dev/stderr"]

@@ -1,4 +1,6 @@
 {
+    "access_log": "/dev/stdout",
+
     "listeners": {
         "*:9000": {
             "pass": "routes"
@@ -64,7 +66,7 @@
         },
         {
             "action": {
-                "share": "/var/www/unit-calculator/frontend/$uri"
+                "share": "/var/www/unit-calculator/frontend$uri"
             }
         }
     ],
@@ -82,8 +84,7 @@
         },
         "multiply": {
             "type": "java",
-            "webapp": "/var/www/unit-calculator/backend/",
-            "classpath": ["/var/www/unit-calculator/backend/multiply-lib/json-simple-4.0.0.jar"]
+            "webapp": "/var/www/unit-calculator/backend/"
         },
         "divide": {
             "type": "external",

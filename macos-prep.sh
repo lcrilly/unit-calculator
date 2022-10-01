@@ -28,7 +28,7 @@ fi
 
 printf "\n${0##*/}: INFO: Configuring Node.JS division service\n"
 cd backend
-npm install body && npm link unit-http
+npm install body && npm link --ignore-scripts unit-http
 
 printf "\n${0##*/}: INFO: Configuring Golang square root service\n"
 go mod init unit-calculator/sqroot && go get unit.nginx.org/go

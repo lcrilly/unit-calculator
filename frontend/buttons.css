@@ -116,3 +116,9 @@ input[type=text] {
     box-shadow: 0 2px #606060;
     transform: translateY(3px);
 }
+
+.text {
+    font-family: Calibri, Arial, Helvetica, sans-serif;
+    font-size: 13pt;
+    align-items: center;
+}

@@ -66,3 +66,8 @@ function showResult() {
     }
     document.getElementById('val').value = JSON.parse(xhr.responseText).result;
 }
+
+function initValue() {
+    query = window.location.href.split("?")[1];
+    if (!isNaN(query)) document.getElementById('val').value = query;
+}

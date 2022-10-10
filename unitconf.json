@@ -67,6 +67,10 @@
         {
             "action": {
                 "share": "/var/www/unit-calculator/frontend$uri"
+            },
+            "fallback": {
+            	"return": 301,
+            	"location": "/?404"
             }
         }
     ],

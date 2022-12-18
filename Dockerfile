@@ -29,14 +29,18 @@ RUN go mod init unit-calculator/sqroot && \
 # created in stage 1
 #
 FROM core
-RUN apt install -y default-jre ruby unit unit-jsc11 unit-python3.9 unit-ruby unit-php unit-perl procps && \
+RUN apt install -y default-jre ruby unit unit-jsc11 unit-python3.9 unit-ruby unit-php unit-perl libplack-perl libjson-perl && \
     rm -rf /var/lib/apt/lists/*
 WORKDIR /var/www/unit-calculator
 COPY frontend/ frontend/
 COPY --from=build /var/www/unit-calculator/backend backend/
-RUN cpan App:cpanminus && cpanm --notest Plack JSON
-COPY unitconf.json /var/lib/unit/conf.json
-RUN sed -i 's/frontend$uri/frontend/' /var/lib/unit/conf.json 
+
+# Apply the Unit configuration using the control API
+#
+COPY unitconf.json init.json
+RUN nohup /bin/sh -c "unitd --no-daemon --pid init.pid --log /dev/stdout --control unix:init.unit.sock &" && \
+    curl -fsX PUT -d@init.json --unix-socket init.unit.sock _/config && \
+    rm init.*
 
 # Simple runtime behaviour for the final image
 #

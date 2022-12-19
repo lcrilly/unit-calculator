@@ -9,68 +9,11 @@
 
     "routes": [
         {
-            "match": {
-                "uri": "/add"
-            },
-            "action": {
-                "pass": "applications/add"
-            }
-        },
-        {
-            "match": {
-                "uri": "/subtract"
-            },
-            "action": {
-                "pass": "applications/subtract"
-            }
-        },
-        {
-            "match": {
-                "uri": "/multiply"
-            },
-            "action": {
-                "pass": "applications/multiply"
-            }
-        },
-        {
-            "match": {
-                "uri": "/divide"
-            },
-            "action": {
-                "pass": "applications/divide"
-            }
-        },
-        {
-            "match": {
-                "uri": "/sqroot"
-            },
-            "action": {
-                "pass": "applications/sqroot"
-            }
-        },
-        {
-            "match": {
-                "uri": "/square"
-            },
-            "action": {
-                "pass": "applications/square"
-            }
-        },
-        {
-            "match": {
-                "uri": "/inverse"
-            },
-            "action": {
-                "pass": "applications/inverse"
-            }
-        },
-        {
             "action": {
                 "share": "/var/www/unit-calculator/frontend$uri",
-	            "fallback": {
-    	        	"return": 301,
-        	    	"location": "/?404"
-            	}
+                "fallback": {
+                    "pass": "applications$uri"
+                }
             }
         }
     ],

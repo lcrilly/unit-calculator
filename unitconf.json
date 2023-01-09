@@ -31,7 +31,7 @@
         },
         "multiply": {
             "type": "java",
-            "webapp": "/var/www/unit-calculator/backend/"
+            "webapp": "/var/www/unit-calculator/backend/multiply-0.0.1-SNAPSHOT.war"
         },
         "divide": {
             "type": "external",

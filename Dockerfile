@@ -13,11 +13,11 @@ RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
     apt update && \
     apt install -y nodejs
 
-# Stage 2: build the unit-npm npm module and Golang binary using packages
+# Stage 2a: build the unit-npm npm module and Golang binary using packages
 # that won't be needed at runtime
 #
 FROM core AS build
-RUN apt install -y golang unit-dev
+RUN apt install -y golang unit-dev clang
 WORKDIR /var/www/unit-calculator/backend
 COPY backend/ ./
 RUN npm install body unit-http
@@ -25,15 +25,32 @@ RUN go mod init unit-calculator/sqroot && \
     go get unit.nginx.org/go && \
     go build -o sqroot sqroot.go
 
+# Stage 2b: build the WebAssembly module using the Rust toolchain
+WORKDIR /wasm-rust
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+RUN . "/root/.cargo/env" && \
+    rustup target add wasm32-wasi && \
+    USER=root cargo init --lib power && \
+    cd power && \
+    cargo add unit-wasm && \
+    printf 'serde_json = "1.0.104"\n' >> Cargo.toml && \
+    printf '[lib]\ncrate-type = ["cdylib"]' >> Cargo.toml
+COPY backend/power.rs ./power/src/lib.rs
+RUN . "/root/.cargo/env" && \
+    cd power && \
+    cargo build --target wasm32-wasi && \
+    cp target/wasm32-wasi/debug/power.wasm /var/www/unit-calculator/backend
+
 # Stage 3: copy the build artefacts from stage 2 into the core image we
 # created in stage 1
 #
 FROM core
-RUN apt install -y default-jre ruby unit unit-jsc11 unit-python3.9 unit-ruby unit-php unit-perl libplack-perl libjson-perl && \
+RUN apt install -y default-jre ruby unit unit-wasm unit-jsc11 unit-python3.9 unit-ruby unit-php unit-perl libplack-perl libjson-perl && \
     rm -rf /var/lib/apt/lists/*
 WORKDIR /var/www/unit-calculator
 COPY frontend/ frontend/
 COPY --from=build /var/www/unit-calculator/backend backend/
+#COPY --from=build /src/wasm-rust/power/target/wasm32-wasi/debug/power.wasm backend/
 
 # Apply the Unit configuration using the control API
 #

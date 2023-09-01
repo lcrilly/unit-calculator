@@ -11,13 +11,14 @@
             <td colspan=4><input id=val readonly type=text value=0></td>
         </tr>
         <tr>
-            <td colspan=2 style="text-align: right;"><img src=logo.svg width="30"></td>
+            <td><button type=button class=unary onClick="allClear()">AC</button></td>
+            <td style="text-align: right;"><img src=logo.svg width="30"></td>
             <td colspan=2 class="text"><b>Unit</b><i>Calc</i> 9000</td>
         </tr>
         <tr>
-            <td><button type=button class=unary onClick="allClear()">AC</button></td>
             <td><button type=button class=unary onClick="execUnary('sqroot')" title="Golang">&#8730;</button></td>
             <td><button type=button class=unary onClick="execUnary('square')" title="PHP"><i>x</i>&#178;</button></td>
+            <td><button type=button class=unary onClick="registerOperation('^')" title="Wasm"><i>x<sup> y</sup></i></button></td>
             <td><button type=button class=unary onClick="execUnary('inverse')" title="Perl">&#185;<i>/<sub>x</sub></i></button></td>
         </tr>
         <tr>

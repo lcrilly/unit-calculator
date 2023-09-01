@@ -18,8 +18,11 @@ function registerOperation(button) {
     document.getElementById('val').value = '';
 
     switch(button) {
+        case '^':
+            operationUri = '/power'; // Wasm (Rust)
+            break;
         case '*':
-            operationUri = '/multiply';
+            operationUri = '/multiply'; // Java
             break;
         case '/':
             operationUri = '/divide'; // GoLang

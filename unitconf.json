@@ -48,6 +48,15 @@
             "root": "/var/www/unit-calculator/backend",
             "script": "square.php"
         },
+        "power": {
+            "type": "wasm",
+            "module": "/var/www/unit-calculator/backend/power.wasm",
+            "request_handler": "uwr_request_handler",
+            "malloc_handler": "luw_malloc_handler",
+            "free_handler": "luw_free_handler",
+            "module_init_handler": "uwr_module_init_handler",
+            "module_end_handler": "uwr_module_end_handler"
+        },
         "inverse": {
             "type": "perl",
             "script": "/var/www/unit-calculator/backend/inverse.psgi"

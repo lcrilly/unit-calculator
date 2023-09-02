@@ -18,6 +18,7 @@ UnitCalc 9000 is a web application with the following characteristics:
    - **` ÷ `** Node.JS
    - **` √ `** Go
    - **` x²`** PHP
+   - **`x^y`** Rust (compiled to WebAssembly)
    - **`1/x`** Perl
  * NGINX Unit serves the frontend and backend components on a single port, and without any other dependencies
    - Each of the mathematical operations are routed to their respective application code

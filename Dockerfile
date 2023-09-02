@@ -28,7 +28,7 @@ RUN go mod init unit-calculator/sqroot && \
 # Stage 2b: build the WebAssembly module using the Rust toolchain
 WORKDIR /wasm-rust
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-RUN . "/root/.cargo/env" && \
+RUN . /root/.cargo/env && \
     rustup target add wasm32-wasi && \
     USER=root cargo init --lib power && \
     cd power && \
@@ -36,7 +36,7 @@ RUN . "/root/.cargo/env" && \
     printf 'serde_json = "1.0.104"\n' >> Cargo.toml && \
     printf '[lib]\ncrate-type = ["cdylib"]' >> Cargo.toml
 COPY backend/power.rs ./power/src/lib.rs
-RUN . "/root/.cargo/env" && \
+RUN . /root/.cargo/env && \
     cd power && \
     cargo build --target wasm32-wasi && \
     cp target/wasm32-wasi/debug/power.wasm /var/www/unit-calculator/backend
@@ -50,7 +50,6 @@ RUN apt install -y default-jre ruby unit unit-wasm unit-jsc11 unit-python3.9 uni
 WORKDIR /var/www/unit-calculator
 COPY frontend/ frontend/
 COPY --from=build /var/www/unit-calculator/backend backend/
-#COPY --from=build /src/wasm-rust/power/target/wasm32-wasi/debug/power.wasm backend/
 
 # Apply the Unit configuration using the control API
 #

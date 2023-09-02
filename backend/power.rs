@@ -33,18 +33,14 @@ pub extern "C" fn uwr_request_handler(addr: *mut u8) -> i32 {
 
     // Deserialize the request body into a JSON object
     let json_object: Value = serde_json::from_str(uwr_get_http_content_str(ctx)).unwrap();
+    let mut result = 0.0;
 
     // Access the "operands" field and iterate over the array of numbers.
     if let Some(operands) = json_object.get("operands") {
         if operands.is_array() {
-            let mut result = 0.0;
             for number in operands.as_array().unwrap() {
                 if let Some(operand) = number.as_f64() {
-                	if result == 0.0 {
-                		result = operand;
-                	} else {
-	                    result = f64::powf(result, operand);
-	                }
+                	result = if result == 0.0 { operand } else { f64::powf(result, operand) };
                 }
             }
             // Store the response body

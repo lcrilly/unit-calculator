@@ -32,8 +32,7 @@ RUN . /root/.cargo/env && \
     rustup target add wasm32-wasi && \
     USER=root cargo init --lib power && \
     cd power && \
-    cargo add unit-wasm && \
-    printf 'serde_json = "1.0.104"\n' >> Cargo.toml && \
+    cargo add unit-wasm serde-json && \
     printf '[lib]\ncrate-type = ["cdylib"]' >> Cargo.toml
 COPY backend/power.rs ./power/src/lib.rs
 RUN . /root/.cargo/env && \

@@ -26,7 +26,33 @@ UnitCalc 9000 is a web application with the following characteristics:
  
 Installation
 ------------
-**MacOS**
+**Docker**
+
+1. Clone this repo and `cd` into it
+2. Build Docker image
+   - `docker build -t unitcalc .`
+3. Start the image
+   - `docker run --name unitcalc -d -p 9000:9000 unitcalc`
+
+**Debian/Ubuntu**
+1. Install Unit ([Debian](https://unit.nginx.org/installation/#debian), [Ubuntu](https://unit.nginx.org/installation/#ubuntu))
+2. Install all the language modules
+   - `apt install unit-dev unit-go unit-jsc20 unit-perl unit-php unit-python3.11 unit-ruby unit-wasm`
+3. Install the Node.JS dependencies
+   - `apt install nodejs npm`
+   - `npm install body unit-http`
+4. Install the Perl dependencies
+   - `apt install libplack-perl`
+   - `sudo cpan App:cpanminus && sudo cpanm --notest Plack JSON`
+6. Clone this repo and `cd` into it
+7. Create a local configuration for this directory
+  - `sed "s|/var/www/unit-calculator|${PWD}|g" < unitconf.json > unitconf_local.json`
+8. Start NGINX Unit
+   `sudo systemctl start unit`
+9. Apply the Unit configuration
+   - `sudo unitc /config ./unitconf_local.json`
+
+**macOS**
 
 0. Ensure you have [Homebrew](https://brew.sh/) installed
 1. Clone this repo and `cd` into it
@@ -35,15 +61,7 @@ Installation
 3. Start NGINX Unit
    - `unitd --control 127.0.0.1:8080`
 4. Apply the Unit configuration
-   - `curl -X PUT --data-binary @unitconf_local.json http://127.0.0.1:8080/config`
-
-**Docker**
-
-1. Clone this repo and `cd` into it
-2. Build Docker image
-   - `docker build -t unitcalc .`
-3. Start the image
-   - `docker run --name unitcalc -d -p 9000:9000 unitcalc`
+   - `unitc /config ./unitconf_local.json`
 
 Demonstration
 -------------
